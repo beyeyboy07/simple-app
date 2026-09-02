@@ -21,14 +21,14 @@ const logout = async () => {
 <template>
     <div class="dashboard">
 
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container">
-                <span class="navbar-brand">
+        <nav class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container py-2">
+                <span class="navbar-brand fw-bold">
                     Simple App
                 </span>
 
                 <button
-                    class="btn btn-outline-light btn-sm"
+                    class="btn btn-outline-light btn-sm px-3"
                     @click="logout"
                 >
                     Logout
@@ -36,84 +36,113 @@ const logout = async () => {
             </div>
         </nav>
 
-        <main class="container py-4">
+        <main class="container py-5">
 
-            <h2>Dashboard</h2>
+            <div class="welcome-section mb-5">
+                <span class="badge bg-primary-subtle text-primary mb-3">
+                    Dashboard
+                </span>
 
-            <p class="text-muted">
-                Selamat datang di Simple App.
-            </p>
+                <h1 class="fw-bold mb-2">
+                    Selamat Datang 👋
+                </h1>
 
-            <div class="row g-3 mt-2">
+                <p class="text-muted mb-0">
+                    Kelola dan gunakan berbagai fitur yang tersedia di Simple App.
+                </p>
+            </div>
 
-                <div class="col-12 col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5>⭐ Bintang</h5>
+            <div class="row g-4">
 
-                            <p class="text-muted">
-                                Generate pola bintang.
-                            </p>
-
-                          <button class="btn btn-primary" @click="router.push('/star')">
-                                Buka
-                            </button>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            ⭐
                         </div>
+
+                        <h5 class="fw-bold">
+                            Bintang
+                        </h5>
+
+                        <p class="text-muted small">
+                            Generate pola bintang dengan beberapa pilihan bentuk.
+                        </p>
+
+                        <button
+                            class="btn btn-primary w-100 mt-auto"
+                            @click="router.push('/star')"
+                        >
+                            Buka Fitur
+                        </button>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5>🔤 Terbilang</h5>
-
-                            <p class="text-muted">
-                                Konversi nominal menjadi terbilang.
-                            </p>
-
-                           <button class="btn btn-primary" @click="router.push('/terbilang')" >
-                                Buka
-                            </button>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            🔤
                         </div>
+
+                        <h5 class="fw-bold">
+                            Terbilang
+                        </h5>
+
+                        <p class="text-muted small">
+                            Konversi nominal Rupiah menjadi tulisan terbilang.
+                        </p>
+
+                        <button
+                            class="btn btn-primary w-100 mt-auto"
+                            @click="router.push('/terbilang')"
+                        >
+                            Buka Fitur
+                        </button>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5>📝 Input Data</h5>
-
-                            <p class="text-muted">
-                                Input data pengguna.
-                            </p>
-
-                            <button
-                                class="btn btn-primary"
-                                @click="router.push('/input-data')"
-                            >
-                                Buka
-                            </button>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            📝
                         </div>
+
+                        <h5 class="fw-bold">
+                            Input Data
+                        </h5>
+
+                        <p class="text-muted small">
+                            Masukkan dan simpan data pengguna ke dalam aplikasi.
+                        </p>
+
+                        <button
+                            class="btn btn-primary w-100 mt-auto"
+                            @click="router.push('/input-data')"
+                        >
+                            Buka Fitur
+                        </button>
                     </div>
                 </div>
 
-
-                <div class="col-12 col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5>📜 History</h5>
-
-                            <p class="text-muted">
-                                Melihat riwayat aktivitas.
-                            </p>
-
-                            <button
-                                class="btn btn-primary"
-                                @click="router.push('/history')"
-                            >
-                                Buka
-                            </button>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            📜
                         </div>
+
+                        <h5 class="fw-bold">
+                            History
+                        </h5>
+
+                        <p class="text-muted small">
+                            Lihat riwayat aktivitas yang telah dilakukan.
+                        </p>
+
+                        <button
+                            class="btn btn-primary w-100 mt-auto"
+                            @click="router.push('/history')"
+                        >
+                            Buka Fitur
+                        </button>
                     </div>
                 </div>
 
@@ -123,3 +152,69 @@ const logout = async () => {
 
     </div>
 </template>
+
+<style scoped>
+.dashboard {
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.welcome-section {
+    max-width: 700px;
+}
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: #f1f3f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.feature-card h5 {
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 576px) {
+    main.container {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+    }
+
+    .welcome-section {
+        margin-bottom: 32px !important;
+    }
+
+    .welcome-section h1 {
+        font-size: 28px;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+}
+</style>
