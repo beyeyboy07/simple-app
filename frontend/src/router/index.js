@@ -4,6 +4,8 @@ import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Star from '../views/Star.vue'
 import Terbilang from '../views/Terbilang.vue'
+import InputData from '../views/InputData.vue'
+
 const routes = [
     {
         path: '/',
@@ -34,6 +36,14 @@ const routes = [
         path: '/terbilang',
         name: 'Terbilang',
         component: Terbilang,
+        meta: {
+            requiresAuth: true,
+        },
+    },
+    {
+        path: '/input-data',
+        name: 'InputData',
+        component: InputData,
         meta: {
             requiresAuth: true,
         },
