@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InputData;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Models\History;
 
 class InputDataController extends Controller
 {
@@ -56,6 +57,28 @@ class InputDataController extends Controller
         }
 
         $data = InputData::create($validated);
+
+        History::create([
+            'user_id' => $request->user()->id,
+            'type' => 'input_data',
+            'action' => 'create',
+            'description' => 'User membuat data input',
+            'data' => [
+                'nama' => $data->nama,
+                'email' => $data->email,
+                'no_hp' => $data->no_hp,
+                'alamat' => $data->alamat,
+                'provinsi' => $data->provinsi,
+                'kota' => $data->kota,
+                'kecamatan' => $data->kecamatan,
+                'kelurahan' => $data->kelurahan,
+                'level' => $data->level,
+                'range_gaji' => $data->range_gaji,
+                'gaji' => $data->gaji,
+                'input_data_id' => $data->id,
+            ],
+            'created_at' => now(),
+        ]);
 
         return response()->json([
             'success' => true,

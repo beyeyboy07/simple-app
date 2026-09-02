@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\StarController;
 use App\Http\Controllers\Api\TerbilangController;
 use App\Http\Controllers\Api\InputDataController;
+use App\Http\Controllers\Api\HistoryController;
 
 Route::get('/health', function () {
     return response()->json([
@@ -52,5 +53,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get(
         '/input-data',
         [InputDataController::class, 'index']
+    );
+
+    Route::get(
+        '/history',
+        [HistoryController::class, 'index']
     );
 });

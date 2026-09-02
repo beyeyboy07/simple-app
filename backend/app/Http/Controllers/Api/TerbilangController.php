@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Terbilang;
 use Illuminate\Http\Request;
+use App\Models\History;
 
 class TerbilangController extends Controller
 {
@@ -33,6 +34,20 @@ class TerbilangController extends Controller
             'user_id' => $request->user()->id,
             'nominal' => $nominal,
             'hasil' => $hasil,
+        ]);
+
+
+        History::create([
+            'user_id' => $request->user()->id,
+            'type' => 'terbilang',
+            'action' => 'generate',
+            'description' => 'User melakukan konversi nominal ke terbilang',
+            'data' => [
+                'nominal' => $nominal,
+                'hasil' => $hasil,
+                'terbilang_id' => $terbilang->id,
+            ],
+            'created_at' => now(),
         ]);
 
         return response()->json([

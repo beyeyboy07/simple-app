@@ -5,6 +5,7 @@ import Dashboard from '../views/Dashboard.vue'
 import Star from '../views/Star.vue'
 import Terbilang from '../views/Terbilang.vue'
 import InputData from '../views/InputData.vue'
+import History from '../views/History.vue'
 
 const routes = [
     {
@@ -44,6 +45,15 @@ const routes = [
         path: '/input-data',
         name: 'InputData',
         component: InputData,
+        meta: {
+            requiresAuth: true,
+        },
+    },
+
+    {
+        path: '/history',
+        name: 'History',
+        component: History,
         meta: {
             requiresAuth: true,
         },

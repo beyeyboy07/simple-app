@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\StarGeneration;
 use Illuminate\Http\Request;
+use App\Models\History;
 
 class StarController extends Controller
 {
@@ -37,6 +38,20 @@ class StarController extends Controller
             'jumlah' => $jumlah,
             'tipe' => $tipe,
             'hasil' => $hasil,
+        ]);
+
+        History::create([
+            'user_id' => $request->user()->id,
+            'type' => 'bintang',
+            'action' => 'generate',
+            'description' => 'User membuat generate bintang',
+            'data' => [
+                'jumlah' => $jumlah,
+                'tipe' => $tipe,
+                'hasil' => $hasil,
+                'star_id' => $star->id,
+            ],
+            'created_at' => now(),
         ]);
 
         return response()->json([

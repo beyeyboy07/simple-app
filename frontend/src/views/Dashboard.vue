@@ -89,6 +89,27 @@ const logout = async () => {
 
                             <button
                                 class="btn btn-primary"
+                                @click="router.push('/input-data')"
+                            >
+                                Buka
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5>📜 History</h5>
+
+                            <p class="text-muted">
+                                Melihat riwayat aktivitas.
+                            </p>
+
+                            <button
+                                class="btn btn-primary"
+                                @click="router.push('/history')"
                             >
                                 Buka
                             </button>
