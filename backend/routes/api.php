@@ -45,18 +45,23 @@ Route::middleware('auth:sanctum')->group(function () {
         [TerbilangController::class, 'history']
     );
 
-    Route::post(
-        '/input-data',
-        [InputDataController::class, 'store']
-    );
-
     Route::get(
         '/input-data',
         [InputDataController::class, 'index']
     );
 
-    Route::get(
-        '/history',
-        [HistoryController::class, 'index']
+    Route::post(
+        '/input-data',
+        [InputDataController::class, 'store']
+    );
+
+    Route::put(
+        '/input-data/{id}',
+        [InputDataController::class, 'update']
+    );
+
+    Route::delete(
+        '/input-data/{id}',
+        [InputDataController::class, 'destroy']
     );
 });
