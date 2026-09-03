@@ -1792,13 +1792,8 @@ onMounted(() => {
 
 .user-card-list {
     display: grid;
-
-    /* 2 card dalam 1 baris */
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    /* Jarak antar card */
-    column-gap: 28px;
-    row-gap: 28px;
+    grid-template-columns: 1fr;
+    gap: 28px;
 }
 
 
