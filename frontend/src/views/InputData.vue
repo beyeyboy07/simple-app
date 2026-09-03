@@ -1739,7 +1739,7 @@ onMounted(() => {
 ========================= */
 
 .data-list-card {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .list-loading {
@@ -1747,7 +1747,7 @@ onMounted(() => {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 35px 20px;
+    padding: 45px 20px;
     color: #6c757d;
     font-size: 13px;
 }
@@ -1757,7 +1757,7 @@ onMounted(() => {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 35px 20px;
+    padding: 45px 20px;
     color: #6c757d;
     text-align: center;
 }
@@ -1785,90 +1785,237 @@ onMounted(() => {
     font-size: 12px;
 }
 
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+
+/* =========================
+   USER CARD LIST
+========================= */
+
+.user-card-list {
+    display: grid;
+
+    /* 2 card dalam 1 baris */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    /* Jarak antar card */
+    column-gap: 28px;
+    row-gap: 28px;
 }
 
-.data-table {
-    width: 100%;
-    min-width: 1000px;
-    border-collapse: collapse;
+
+/* =========================
+   USER CARD
+========================= */
+
+.user-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 20px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.035);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #d7e5ff;
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.user-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 17px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+.user-avatar {
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e7f1ff;
+    color: #0d6efd;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.user-card-name {
+    min-width: 0;
+    flex: 1;
+}
+
+.user-card-name h3 {
+    margin: 0 0 4px;
+
+    color: #212529;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-card-name span {
+    display: block;
+
+    color: #6c757d;
+
+    font-size: 12px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   CARD BODY
+========================= */
+
+.user-card-body {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 18px;
+    row-gap: 18px;
+
+    padding: 20px 0;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+
+    min-width: 0;
+}
+
+.info-icon {
+    width: 31px;
+    height: 31px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8f9fa;
+
+    border-radius: 8px;
+
     font-size: 13px;
 }
 
-.data-table th {
-    background: #f8f9fa;
-    color: #495057;
-    font-weight: 700;
-    text-align: left;
-    padding: 12px;
-    border-bottom: 1px solid #dee2e6;
-    white-space: nowrap;
+.info-item > div {
+    min-width: 0;
 }
 
-.data-table td {
-    color: #495057;
-    padding: 13px 12px;
-    border-bottom: 1px solid #f0f1f3;
-    white-space: nowrap;
+.info-item small {
+    display: block;
+
+    color: #868e96;
+
+    font-size: 10px;
+
+    margin-bottom: 3px;
 }
 
-.data-table tbody tr:hover {
-    background: #f8f9fa;
+.info-item strong {
+    display: block;
+
+    color: #343a40;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.data-table td strong {
-    color: #212529;
+.salary-range {
+    display: block;
+
+    color: #868e96;
+
+    font-size: 10px;
+
+    margin-top: 2px;
 }
 
 
 /* =========================
-   LEVEL BADGE
+   CARD FOOTER
 ========================= */
 
-.level-badge {
-    display: inline-flex;
+.user-card-footer {
+    display: flex;
     align-items: center;
-    padding: 4px 9px;
-    border-radius: 20px;
+    justify-content: space-between;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #f0f1f3;
+}
+
+.card-number {
+    color: #adb5bd;
+
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
 }
-
-.level-badge.staff {
-    background: #e7f1ff;
-    color: #0d6efd;
-}
-
-.level-badge.supervisor {
-    background: #fff3cd;
-    color: #856404;
-}
-
-.level-badge.manager {
-    background: #d1e7dd;
-    color: #0f5132;
-}
-
-
-/* =========================
-   ACTION BUTTON
-========================= */
 
 .action-buttons {
     display: flex;
-    gap: 6px;
+    align-items: center;
+    gap: 7px;
 }
 
 .edit-button,
 .delete-button {
     border: 0;
     border-radius: 7px;
-    padding: 6px 10px;
+
+    padding: 7px 11px;
+
     font-size: 11px;
     font-weight: 600;
+
     cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
 .edit-button {
@@ -1887,6 +2034,11 @@ onMounted(() => {
 
 .delete-button:hover {
     background: #f1bfc4;
+}
+
+.edit-button:active,
+.delete-button:active {
+    transform: scale(0.97);
 }
 
 
