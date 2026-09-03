@@ -64,4 +64,9 @@ Route::middleware('auth:sanctum')->group(function () {
         '/input-data/{id}',
         [InputDataController::class, 'destroy']
     );
+
+     Route::get(
+        '/history',
+        [HistoryController::class, 'index']
+    );
 });
