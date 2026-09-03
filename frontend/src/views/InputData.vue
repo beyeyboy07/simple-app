@@ -1232,167 +1232,160 @@ onMounted(() => {
                 </div>
 
 
-                <!-- TABLE -->
+                <!-- CARD LIST -->
 
                 <div
                     v-else
-                    class="table-wrapper"
+                    class="user-card-list"
                 >
+                    <div
+                        v-for="(item, index) in inputDataList"
+                        :key="item.id"
+                        class="user-card"
+                    >
 
-                    <table class="data-table">
+                        <!-- CARD HEADER -->
 
-                        <thead>
+                        <div class="user-card-header">
 
-                            <tr>
+                            <div class="user-avatar">
+                                {{ item.nama?.charAt(0)?.toUpperCase() }}
+                            </div>
 
-                                <th>
-                                    No
-                                </th>
+                            <div class="user-card-name">
 
-                                <th>
-                                    Nama
-                                </th>
+                                <h3>
+                                    {{ item.nama }}
+                                </h3>
 
-                                <th>
-                                    Email
-                                </th>
-
-                                <th>
-                                    No HP
-                                </th>
-
-                                <th>
-                                    Provinsi
-                                </th>
-
-                                <th>
-                                    Kota
-                                </th>
-
-                                <th>
-                                    Level
-                                </th>
-
-                                <th>
-                                    Range Gaji
-                                </th>
-
-                                <th>
-                                    Gaji
-                                </th>
-
-                                <th>
-                                    Aksi
-                                </th>
-
-                            </tr>
-
-                        </thead>
-
-
-                        <tbody>
-
-                            <tr
-                                v-for="(
-                                    item,
-                                    index
-                                ) in inputDataList"
-                                :key="item.id"
-                            >
-
-                                <td>
-                                    {{ index + 1 }}
-                                </td>
-
-                                <td>
-                                    <strong>
-                                        {{ item.nama }}
-                                    </strong>
-                                </td>
-
-                                <td>
+                                <span>
                                     {{ item.email }}
-                                </td>
+                                </span>
 
-                                <td>
-                                    +{{ item.no_hp }}
-                                </td>
+                            </div>
 
-                                <td>
-                                    {{ item.provinsi }}
-                                </td>
+                        </div>
 
-                                <td>
-                                    {{ item.kota }}
-                                </td>
 
-                                <td>
+                        <!-- CARD CONTENT -->
 
-                                    <span
-                                        class="level-badge"
-                                        :class="{
-                                            staff:
-                                                item.level === 'Staff',
-                                            supervisor:
-                                                item.level === 'Supervisor',
-                                            manager:
-                                                item.level === 'Manager',
-                                        }"
-                                    >
+                        <div class="user-card-body">
+
+                            <div class="info-item">
+
+                                <span class="info-icon">
+                                    📱
+                                </span>
+
+                                <div>
+                                    <small>
+                                        No HP
+                                    </small>
+
+                                    <strong>
+                                        +{{ item.no_hp }}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-icon">
+                                    📍
+                                </span>
+
+                                <div>
+                                    <small>
+                                        Lokasi
+                                    </small>
+
+                                    <strong>
+                                        {{ item.kota }},
+                                        {{ item.provinsi }}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-icon">
+                                    💼
+                                </span>
+
+                                <div>
+                                    <small>
+                                        Level
+                                    </small>
+
+                                    <strong>
                                         {{ item.level }}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-icon">
+                                    💰
+                                </span>
+
+                                <div>
+                                    <small>
+                                        Gaji
+                                    </small>
+
+                                    <strong>
+                                        Rp {{ formatRupiah(item.gaji) }}
+                                    </strong>
+
+                                    <span class="salary-range">
+                                        {{ item.range_gaji }}
                                     </span>
 
-                                </td>
+                                </div>
 
-                                <td>
-                                    {{ item.range_gaji }}
-                                </td>
+                            </div>
 
-                                <td>
-                                    Rp
-                                    {{
-                                        formatRupiah(
-                                            item.gaji
-                                        )
-                                    }}
-                                </td>
+                        </div>
 
-                                <td>
 
-                                    <div class="action-buttons">
+                        <!-- CARD FOOTER -->
 
-                                        <button
-                                            type="button"
-                                            class="edit-button"
-                                            @click="
-                                                editData(item)
-                                            "
-                                        >
-                                            Edit
-                                        </button>
+                        <div class="user-card-footer">
 
-                                        <button
-                                            type="button"
-                                            class="delete-button"
-                                            @click="
-                                                deleteData(
-                                                    item.id
-                                                )
-                                            "
-                                        >
-                                            Hapus
-                                        </button>
+                            <span class="card-number">
+                                #{{ index + 1 }}
+                            </span>
 
-                                    </div>
+                            <div class="action-buttons">
 
-                                </td>
+                                <button
+                                    type="button"
+                                    class="edit-button"
+                                    @click="editData(item)"
+                                >
+                                    ✏️ Edit
+                                </button>
 
-                            </tr>
+                                <button
+                                    type="button"
+                                    class="delete-button"
+                                    @click="deleteData(item.id)"
+                                >
+                                    🗑 Hapus
+                                </button>
 
-                        </tbody>
+                            </div>
 
-                    </table>
+                        </div>
 
+                    </div>
                 </div>
 
             </div>
